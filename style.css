@@ -397,3 +397,7 @@ b,strong{font-weight:500}
   .mbar__calc{background:var(--lichen);color:var(--slag)!important;font-weight:500}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}.rv{opacity:1;transform:none}}
+
+/* моб. меню поверх всего: поднимаем шапку, прячем нижнюю плашку */
+body:has(.nav.is-open) .hero__top{z-index:200}
+body:has(.nav.is-open) .mbar{display:none}
