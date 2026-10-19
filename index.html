@@ -16,47 +16,26 @@
 <link rel="alternate" hreflang="ro" href="ro.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/Geologica-Light.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
 
-<div class="vlines" aria-hidden="true"><i></i><i></i><i></i></div>
-
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
-  <aside class="hero__panel">
+  <div class="hero__slides">
+    <figure class="hero__slide is-on" data-cap="дом из 6 модулей · 108 м²" data-t="Дом из модулей за 14 дней" data-p="Модули собирают в цеху, привозят и ставят за один-два дня. Без долгой стройки и грязи на участке.">
+      <img src="img/hero-1.webp" alt="Двухэтажный модульный дом среди соснового леса, вид сверху" fetchpriority="high">
+    </figure>
+    <figure class="hero__slide" data-cap="дом из 4 модулей · 72 м²" data-t="Жить можно круглый год" data-p="Четыре модуля — спальни, кухня-гостиная и терраса во всю длину. Утеплённые стены, пол и панорамные окна.">
+      <img src="img/hero-2.webp" alt="Одноэтажный модульный дом с панорамным остеклением и террасой осенью" loading="lazy">
+    </figure>
+    <figure class="hero__slide" data-cap="модуль 6 × 3 м · 18 м²" data-t="Своё производство" data-p="Каркас, стены и отделку делаем сами, без перекупщиков. Присылаем фото каждого этапа, пока модуль в цеху.">
+      <img src="img/hero-3.webp" alt="Модуль с панорамным остеклением вечером, внутри горит свет" loading="lazy">
+    </figure>
+  </div>
+
+  <div class="hero__top">
     <a class="logo" href="#top" aria-label="MODULA — на главную">MODULA<b>.</b></a>
-    <div class="hero__metric">
-      <span class="hero__num" id="heroNum">108</span><sup id="heroUnit">м²</sup>
-      <span class="hero__cap" id="heroCap">дом из 6 модулей, 2 этажа</span>
-    </div>
-    <div class="hero__ctrl">
-      <button class="hero__arr" id="heroPrev" aria-label="Предыдущий слайд">←</button>
-      <span class="hero__count"><b id="heroIdx">01</b> / 03</span>
-      <button class="hero__arr" id="heroNext" aria-label="Следующий слайд">→</button>
-    </div>
-    <p class="hero__vert">свой цех · Молдова</p>
-    <ul class="hero__soc">
-      <li><a href="#" aria-label="Instagram">ig</a></li>
-      <li><a href="#" aria-label="Facebook">fb</a></li>
-      <li><a href="#" aria-label="TikTok">tt</a></li>
-    </ul>
-    <span class="ghost ghost--panel" aria-hidden="true">modula</span>
-  </aside>
-
-  <div class="hero__stage">
-    <div class="hero__slides">
-      <figure class="hero__slide is-on" data-num="108" data-unit="м²" data-cap="дом из 6 модулей, 2 этажа" data-t="Модуль для жизни" data-p="Дом из модулей вместо долгой стройки. Модули собирают в цеху, привозят и ставят за один-два дня.">
-        <img src="img/hero-1.webp" alt="Двухэтажный модульный дом среди соснового леса, вид сверху" fetchpriority="high">
-      </figure>
-      <figure class="hero__slide" data-num="72" data-unit="м²" data-cap="дом из четырёх модулей" data-t="Дом за месяц" data-p="Четыре модуля — спальни, кухня-гостиная и терраса во всю длину. Панорамные окна, жить можно круглый год.">
-        <img src="img/hero-2.webp" alt="Одноэтажный модульный дом с панорамным остеклением и террасой осенью" loading="lazy">
-      </figure>
-      <figure class="hero__slide" data-num="14" data-unit="дн." data-cap="от договора до монтажа" data-t="Своё производство" data-p="Каркас, стены и отделку делаем сами, без перекупщиков. Пришлём фото каждого этапа, пока модуль в цеху.">
-        <img src="img/hero-3.webp" alt="Модуль с панорамным остеклением вечером, внутри горит свет" loading="lazy">
-      </figure>
-    </div>
-
     <nav class="nav" aria-label="Меню">
       <a href="#uses">Для чего</a>
       <a href="#models">Модели</a>
@@ -68,17 +47,41 @@
       <a class="nav__tel" href="tel:+37360000000">060 000 000</a>
     </nav>
     <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><i></i><i></i></button>
+  </div>
 
+  <div class="hero__body">
     <div class="hero__text">
       <p class="eyebrow">Модульные дома · офисы · бытовки</p>
-      <h1 class="hero__title" id="heroTitle">Модуль для жизни</h1>
-      <p class="hero__lead" id="heroLead">Дом из модулей вместо долгой стройки. Модули собирают в цеху, привозят и ставят за один-два дня.</p>
+      <h1 class="hero__title" id="heroTitle">Дом из модулей за 14 дней</h1>
+      <p class="hero__lead" id="heroLead">Модули собирают в цеху, привозят и ставят за один-два дня. Без долгой стройки и грязи на участке.</p>
       <div class="hero__btns">
         <a class="btn btn--lime" href="#calc">Рассчитать цену</a>
         <a class="btn btn--glass" href="#models">Модели и цены</a>
       </div>
     </div>
+
+    <aside class="hero__price">
+      <p class="hero__price-cap">Модуль 6 × 3 м</p>
+      <p class="hero__price-sum">от 4 300 €</p>
+      <ul>
+        <li><span>площадь</span><b>18 м²</b></li>
+        <li><span>срок</span><b>14 дней</b></li>
+        <li><span>монтаж</span><b>1 день</b></li>
+      </ul>
+      <a class="hero__price-go" href="#calc">Посчитать свой →</a>
+    </aside>
   </div>
+
+  <div class="hero__dots">
+    <span class="hero__cap" id="heroCap">дом из 6 модулей · 108 м²</span>
+    <div class="hero__bars" role="tablist" aria-label="Слайды">
+      <button class="is-on" aria-label="Слайд 1"><i></i></button>
+      <button aria-label="Слайд 2"><i></i></button>
+      <button aria-label="Слайд 3"><i></i></button>
+    </div>
+  </div>
+
+  <p class="hero__word" aria-hidden="true">MODULA</p>
 </header>
 
 <!-- ============ FACTS ============ -->
@@ -96,16 +99,20 @@
   <span class="ghost" aria-hidden="true">uses</span>
   <div class="wrap">
     <h2 class="stitle">Для чего <span>берут модули</span></h2>
-    <p class="slead">Один и тот же каркас становится дачей, офисом или постом охраны — меняется только начинка. Нажмите на свой вариант, и калькулятор подставит размер.</p>
+    <p class="slead">Один и тот же каркас становится дачей, офисом или постом охраны — меняется только начинка. Выберите свой вариант — покажем размер, цену и что внутри.</p>
   </div>
-  <div class="strip" id="strip">
-    <button class="strip__it" data-type="dacha"><img src="img/use-dacha.webp" alt="Стеклянный модуль на склоне среди деревьев" loading="lazy"><span class="strip__v">Дача и жильё</span><span class="strip__d">6 × 3 м · 18 м²</span></button>
-    <button class="strip__it" data-type="office"><img src="img/use-office.webp" alt="Тёмное двухэтажное модульное здание с рольставнями" loading="lazy"><span class="strip__v">Офис</span><span class="strip__d">6 × 3 м · 18 м²</span></button>
-    <button class="strip__it" data-type="bytovka"><img src="img/use-bytovka.webp" alt="Бытовка с синей дверью на опорах" loading="lazy"><span class="strip__v">Бытовка</span><span class="strip__d">6 × 2,4 м · 14 м²</span></button>
-    <button class="strip__it" data-type="post"><img src="img/use-post.webp" alt="Охранник в будке у въезда на территорию" loading="lazy"><span class="strip__v">Пост охраны</span><span class="strip__d">2 × 2 м · 4 м²</span></button>
-    <button class="strip__it" data-type="sanblok"><img src="img/use-sanblok.webp" alt="Серый технический модуль с вентиляционной дверью" loading="lazy"><span class="strip__v">Санблок</span><span class="strip__d">6 × 2,4 м · 14 м²</span></button>
-    <button class="strip__it" data-type="sklad"><img src="img/use-sklad.webp" alt="Здание из сэндвич-панелей с окнами" loading="lazy"><span class="strip__v">Гараж, склад</span><span class="strip__d">6 × 4 м · 24 м²</span></button>
-    <button class="strip__it" data-type="gorodok"><img src="img/use-gorodok.webp" alt="Ряд жилых модулей для рабочих" loading="lazy"><span class="strip__v">Городок для рабочих</span><span class="strip__d">от 4 модулей</span></button>
+  <div class="wrap uses">
+    <div class="uses__list" id="usesList" role="tablist" aria-label="Для чего модуль"></div>
+    <article class="uses__card" id="usesCard" aria-live="polite">
+      <div class="uses__img"><img id="uImg" src="img/use-dacha.webp" alt="" loading="lazy"><span class="uses__tag" id="uTag">6 × 3 м · 18 м²</span></div>
+      <div class="uses__body">
+        <h3 id="uTitle">Дача и жильё</h3>
+        <p id="uText"></p>
+        <ul class="uses__specs" id="uSpecs"></ul>
+        <ul class="uses__inc" id="uInc"></ul>
+        <button class="btn btn--dark" id="uGo" type="button">Посчитать этот вариант</button>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -483,6 +490,6 @@
   "baseDays": 14
 }
 </script>
-<script src="main.js?v=8"></script>
+<script src="main.js?v=10"></script>
 </body>
 </html>

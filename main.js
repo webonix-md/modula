@@ -19,29 +19,28 @@
   const fmt = n => Math.round(n).toLocaleString('ru-RU').replace(/,/g, ' ');
 
   /* ---------- HERO slider ---------- */
-  const slides = $$('.hero__slide');
+  const slides = $$('.hero__slide'), bars = $$('.hero__bars button');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let cur = 0, timer;
   const show = i => {
     cur = (i + slides.length) % slides.length;
     const s = slides[cur];
-    const fade = ['#heroNum', '#heroTitle', '#heroLead', '#heroCap'].map(x => $(x));
+    const fade = ['#heroTitle', '#heroLead', '#heroCap'].map(x => $(x));
     fade.forEach(el => el.classList.add('is-fading'));
     slides.forEach((x, k) => x.classList.toggle('is-on', k === cur));
+    bars.forEach((x, k) => { x.classList.remove('is-on', 'is-done'); void x.offsetWidth; if (k < cur) x.classList.add('is-done'); });
+    bars[cur].classList.add('is-on');
     setTimeout(() => {
-      $('#heroNum').textContent = s.dataset.num;
-      $('#heroUnit').textContent = s.dataset.unit;
       $('#heroCap').textContent = s.dataset.cap;
       $('#heroTitle').textContent = s.dataset.t;
       $('#heroLead').textContent = s.dataset.p;
-      $('#heroIdx').textContent = String(cur + 1).padStart(2, '0');
       fade.forEach(el => el.classList.remove('is-fading'));
     }, 350);
     slides.forEach(x => { const im = $('img', x); if (im.loading === 'lazy') im.loading = 'eager'; });
   };
-  const auto = () => { clearInterval(timer); timer = setInterval(() => show(cur + 1), 7000); };
-  $('#heroPrev').onclick = () => { show(cur - 1); auto(); };
-  $('#heroNext').onclick = () => { show(cur + 1); auto(); };
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) auto();
+  const auto = () => { clearInterval(timer); if (!still) timer = setInterval(() => show(cur + 1), 7000); };
+  bars.forEach((b, k) => b.onclick = () => { show(k); auto(); });
+  auto();
 
   /* ---------- burger ---------- */
   const nav = $('.nav'), bg = $('#burger');
@@ -174,14 +173,51 @@
   render();
 
   const goCalc = (o) => { Object.assign(st, o); render(); $('#calc').scrollIntoView({ behavior: 'smooth' }); };
-  $$('#strip .strip__it').forEach(b => b.onclick = () => {
-    const t = D.types.find(x => x.id === b.dataset.type);
-    goCalc({ type: t.id, size: t.size, kit: t.kit, count: t.count || 1, opts: new Set(t.opts || []) });
-  });
+  const preset = id => { const t = D.types.find(x => x.id === id); return { type: t.id, size: t.size, kit: t.kit, count: t.count || 1, opts: new Set(t.opts || []) }; };
+
+  /* ---------- USES: выбор назначения ---------- */
+  const USES = RO ? [
+    { id: 'dacha', img: 'use-dacha', t: 'Vilă și locuință', p: 'Modul cald pentru grădină sau pentru locuit permanent. Din câteva module se face o casă întreagă.', inc: ['Pereți PIR 100 mm, podea izolată', 'Fereastră panoramică spre grădină', 'Baie cu duș și boiler'], days: 18 },
+    { id: 'office', img: 'use-office', t: 'Oficiu', p: 'Oficiu lângă depozit, pe șantier sau în oraș. Din câteva module se face o clădire cu două etaje.', inc: ['Laminat, 6 prize, aer condiționat', 'Se îmbină în oficii de 2–6 module', 'Baie — opțional'], days: 14 },
+    { id: 'bytovka', img: 'use-bytovka', t: 'Vagon de șantier', p: 'Pentru echipă, pază sau depozit de scule. Se mută de pe un șantier pe altul cu macaraua.', inc: ['Panouri 50 mm, ușă metalică', '2 camere sau una mare', 'Tablou și lumină'], days: 10 },
+    { id: 'post', img: 'use-post', t: 'Post de pază', p: 'Gheretă la intrarea pe teritoriu, la parcare sau la depozit. Se montează într-o oră.', inc: ['Ferestre pe trei laturi', 'Încălzitor și lumină', 'Se mută oricând'], days: 7 },
+    { id: 'sanblok', img: 'use-sanblok', t: 'Bloc sanitar', p: 'WC, dușuri și vestiare pentru șantier, plajă sau eveniment. Se racordează la apă și canalizare.', inc: ['Dușuri și WC după numărul de oameni', 'Boiler și ventilație', 'Podea care nu se teme de apă'], days: 14 },
+    { id: 'sklad', img: 'use-sklad', t: 'Garaj, depozit', p: 'Cutie din panouri sandwich pentru mașină, scule sau marfă. Fără finisaje — doar ce trebuie.', inc: ['Poartă de orice lățime', 'Panouri sandwich pe structură metalică', 'Lumină și prize — la dorință'], days: 10 },
+    { id: 'gorodok', img: 'use-gorodok', t: 'Tabără pentru muncitori', p: 'Câteva vagoane pentru o echipă mare: dormitoare, bucătărie și bloc sanitar într-un singur loc.', inc: ['De la 4 module', 'Dormitoare, bucătărie, dușuri', 'Livrare și montaj într-o zi'], days: 21 }
+  ] : [
+    { id: 'dacha', img: 'use-dacha', t: 'Дача и жильё', p: 'Тёплый модуль на участке для отдыха или постоянной жизни. Из нескольких модулей собирается полноценный дом.', inc: ['Стены PIR 100 мм, утеплённый пол', 'Панорамное окно на сад', 'Санузел с душем и бойлером'], days: 18 },
+    { id: 'office', img: 'use-office', t: 'Офис', p: 'Офис у склада, на стройке или в городе. Из нескольких модулей получается двухэтажное здание.', inc: ['Ламинат, 6 розеток, кондиционер', 'Стыкуется в офис на 2–6 модулей', 'Санузел — опция'], days: 14 },
+    { id: 'bytovka', img: 'use-bytovka', t: 'Бытовка', p: 'Для бригады, охраны или склада инструмента. Переезжает с объекта на объект манипулятором.', inc: ['Панели 50 мм, металлическая дверь', '2 комнаты или одна большая', 'Щиток и свет'], days: 10 },
+    { id: 'post', img: 'use-post', t: 'Пост охраны', p: 'Будка на въезде, у парковки или склада. Ставится за час, при переезде забираете с собой.', inc: ['Окна на три стороны', 'Обогреватель и свет', 'Можно перевезти в любой момент'], days: 7 },
+    { id: 'sanblok', img: 'use-sanblok', t: 'Санблок', p: 'Туалеты, душевые и раздевалки для стройки, пляжа или мероприятия. Подключаем к воде и канализации.', inc: ['Душевые и туалеты по числу людей', 'Бойлер и вентиляция', 'Пол, который не боится воды'], days: 14 },
+    { id: 'sklad', img: 'use-sklad', t: 'Гараж, склад', p: 'Коробка из сэндвич-панелей для машины, инструмента или товара. Без отделки — только то, что нужно.', inc: ['Ворота любой ширины', 'Сэндвич-панели на металлокаркасе', 'Свет и розетки — по желанию'], days: 10 },
+    { id: 'gorodok', img: 'use-gorodok', t: 'Городок для рабочих', p: 'Несколько бытовок для большой бригады: спальни, кухня и санблок в одном месте.', inc: ['От 4 модулей', 'Спальни, кухня, душевые', 'Доставка и монтаж за день'], days: 21 }
+  ];
+  const UL = RO ? { from: 'de la', area: 'suprafață', term: 'termen', days: 'zile' } : { from: 'от', area: 'площадь', term: 'срок', days: 'дней' };
+  let uCur = 0;
+  const usesEl = $('.uses');
+  const uPrice = u => { const t = D.types.find(x => x.id === u.id), sz = size(t.size), n = t.count || 1; return { sz, n, p: Math.round(sz.price * kit(t.kit).k * n / 100) * 100 }; };
+  $('#usesList').innerHTML = USES.map((u, i) => `<button class="utab${i ? '' : ' is-on'}" role="tab" aria-selected="${!i}" data-i="${i}">${u.t}<small>${UL.from} ${fmt(uPrice(u).p)} €</small></button>`).join('');
+  const uShow = (i, anim) => {
+    uCur = i; const u = USES[i], { sz, n, p } = uPrice(u);
+    $$('.utab').forEach((b, k) => { b.classList.toggle('is-on', k === i); b.setAttribute('aria-selected', k === i); });
+    const fill = () => {
+      $('#uImg').src = `img/${u.img}.webp`; $('#uImg').alt = u.t;
+      $('#uTag').textContent = `${sz.t}${n > 1 ? ' × ' + n : ''} · ${fmt(sz.m2 * n)} ${L.m2}`;
+      $('#uTitle').textContent = u.t; $('#uText').textContent = u.p;
+      $('#uSpecs').innerHTML = `<li>${UL.from}<b>${fmt(p)} €</b></li><li>${UL.area}<b>${fmt(sz.m2 * n)} ${L.m2}</b></li><li>${UL.term}<b>${u.days} ${UL.days}</b></li>`;
+      $('#uInc').innerHTML = u.inc.map(x => `<li>${x}</li>`).join('');
+      usesEl.classList.remove('is-switching');
+    };
+    if (anim) { usesEl.classList.add('is-switching'); setTimeout(fill, 250); } else fill();
+  };
+  $('#usesList').onclick = e => { const b = e.target.closest('.utab'); if (b && +b.dataset.i !== uCur) uShow(+b.dataset.i, true); };
+  $('#uGo').onclick = () => goCalc(preset(USES[uCur].id));
+  uShow(0, false);
   if (grid) grid.onclick = e => {
     const b = e.target.closest('.model__go'); if (!b) return;
     const m = MODELS[b.dataset.m];
-    goCalc({ type: m.type, size: m.size, kit: m.kit, count: m.count || 1, opts: new Set((D.types.find(x => x.id === m.type).opts) || []) });
+    goCalc({ ...preset(m.type), size: m.size, kit: m.kit, count: m.count || 1 });
   };
 
   /* ---------- reveal ---------- */

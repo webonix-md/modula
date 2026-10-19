@@ -16,47 +16,26 @@
 <link rel="alternate" hreflang="ru" href="index.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/Geologica-Light.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
 
-<div class="vlines" aria-hidden="true"><i></i><i></i><i></i></div>
-
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
-  <aside class="hero__panel">
+  <div class="hero__slides">
+    <figure class="hero__slide is-on" data-cap="casă din 6 module · 108 m²" data-t="Casă din module în 14 zile" data-p="Modulele se asamblează în atelier, se aduc și se montează în una-două zile. Fără șantier lung și murdărie pe teren.">
+      <img src="img/hero-1.webp" alt="Casă modulară cu două etaje într-o pădure de pini, vedere de sus" fetchpriority="high">
+    </figure>
+    <figure class="hero__slide" data-cap="casă din 4 module · 72 m²" data-t="Se poate locui tot anul" data-p="Patru module — dormitoare, bucătărie-living și terasă pe toată lungimea. Pereți și podea izolate, ferestre panoramice.">
+      <img src="img/hero-2.webp" alt="Casă modulară cu un etaj, cu vitraje panoramice și terasă, toamna" loading="lazy">
+    </figure>
+    <figure class="hero__slide" data-cap="modul 6 × 3 m · 18 m²" data-t="Producție proprie" data-p="Structura, pereții și finisajele le facem noi, fără intermediari. Trimitem poze la fiecare etapă, cât modulul e în atelier.">
+      <img src="img/hero-3.webp" alt="Modul cu vitraje panoramice seara, cu lumina aprinsă înăuntru" loading="lazy">
+    </figure>
+  </div>
+
+  <div class="hero__top">
     <a class="logo" href="#top" aria-label="MODULA — pagina principală">MODULA<b>.</b></a>
-    <div class="hero__metric">
-      <span class="hero__num" id="heroNum">108</span><sup id="heroUnit">m²</sup>
-      <span class="hero__cap" id="heroCap">casă din 6 module, 2 etaje</span>
-    </div>
-    <div class="hero__ctrl">
-      <button class="hero__arr" id="heroPrev" aria-label="Slide-ul anterior">←</button>
-      <span class="hero__count"><b id="heroIdx">01</b> / 03</span>
-      <button class="hero__arr" id="heroNext" aria-label="Slide-ul următor">→</button>
-    </div>
-    <p class="hero__vert">atelier propriu · Moldova</p>
-    <ul class="hero__soc">
-      <li><a href="#" aria-label="Instagram">ig</a></li>
-      <li><a href="#" aria-label="Facebook">fb</a></li>
-      <li><a href="#" aria-label="TikTok">tt</a></li>
-    </ul>
-    <span class="ghost ghost--panel" aria-hidden="true">modula</span>
-  </aside>
-
-  <div class="hero__stage">
-    <div class="hero__slides">
-      <figure class="hero__slide is-on" data-num="108" data-unit="m²" data-cap="casă din 6 module, 2 etaje" data-t="Modul pentru locuit" data-p="O casă din module în locul unui șantier lung. Modulele se asamblează în atelier, se aduc și se montează în una-două zile.">
-        <img src="img/hero-1.webp" alt="Casă modulară cu două etaje într-o pădure de pini, vedere de sus" fetchpriority="high">
-      </figure>
-      <figure class="hero__slide" data-num="72" data-unit="m²" data-cap="casă din patru module" data-t="Casă într-o lună" data-p="Patru module — dormitoare, bucătărie-living și terasă pe toată lungimea. Ferestre panoramice, se poate locui tot anul.">
-        <img src="img/hero-2.webp" alt="Casă modulară cu un etaj, cu vitraje panoramice și terasă, toamna" loading="lazy">
-      </figure>
-      <figure class="hero__slide" data-num="14" data-unit="zile" data-cap="de la contract la montaj" data-t="Producție proprie" data-p="Structura, pereții și finisajele le facem noi, fără intermediari. Vă trimitem poze la fiecare etapă, cât modulul e în atelier.">
-        <img src="img/hero-3.webp" alt="Modul cu vitraje panoramice seara, cu lumina aprinsă înăuntru" loading="lazy">
-      </figure>
-    </div>
-
     <nav class="nav" aria-label="Meniu">
       <a href="#uses">Utilizări</a>
       <a href="#models">Modele</a>
@@ -68,17 +47,41 @@
       <a class="nav__tel" href="tel:+37360000000">060 000 000</a>
     </nav>
     <button class="burger" id="burger" aria-label="Deschide meniul" aria-expanded="false"><i></i><i></i></button>
+  </div>
 
+  <div class="hero__body">
     <div class="hero__text">
       <p class="eyebrow">Case modulare · oficii · vagoane</p>
-      <h1 class="hero__title" id="heroTitle">Modul pentru locuit</h1>
-      <p class="hero__lead" id="heroLead">O casă din module în locul unui șantier lung. Modulele se asamblează în atelier, se aduc și se montează în una-două zile.</p>
+      <h1 class="hero__title" id="heroTitle">Casă din module în 14 zile</h1>
+      <p class="hero__lead" id="heroLead">Modulele se asamblează în atelier, se aduc și se montează în una-două zile. Fără șantier lung și murdărie pe teren.</p>
       <div class="hero__btns">
         <a class="btn btn--lime" href="#calc">Calculează prețul</a>
         <a class="btn btn--glass" href="#models">Modele și prețuri</a>
       </div>
     </div>
+
+    <aside class="hero__price">
+      <p class="hero__price-cap">Modul 6 × 3 m</p>
+      <p class="hero__price-sum">de la 4 300 €</p>
+      <ul>
+        <li><span>suprafață</span><b>18 m²</b></li>
+        <li><span>termen</span><b>14 zile</b></li>
+        <li><span>montaj</span><b>1 zi</b></li>
+      </ul>
+      <a class="hero__price-go" href="#calc">Calculați-l pe al dvs. →</a>
+    </aside>
   </div>
+
+  <div class="hero__dots">
+    <span class="hero__cap" id="heroCap">casă din 6 module · 108 m²</span>
+    <div class="hero__bars" role="tablist" aria-label="Slide-uri">
+      <button class="is-on" aria-label="Slide-ul 1"><i></i></button>
+      <button aria-label="Slide-ul 2"><i></i></button>
+      <button aria-label="Slide-ul 3"><i></i></button>
+    </div>
+  </div>
+
+  <p class="hero__word" aria-hidden="true">MODULA</p>
 </header>
 
 <!-- ============ FACTS ============ -->
@@ -96,16 +99,20 @@
   <span class="ghost" aria-hidden="true">uses</span>
   <div class="wrap">
     <h2 class="stitle">Utilizări <span>se folosesc modulele</span></h2>
-    <p class="slead">Aceeași structură devine casă de vacanță, oficiu sau post de pază — se schimbă doar interiorul. Apăsați pe varianta dvs. și calculatorul pune dimensiunea.</p>
+    <p class="slead">Aceeași structură devine casă de vacanță, oficiu sau post de pază — se schimbă doar interiorul. Alegeți varianta dvs. — vă arătăm dimensiunea, prețul și ce e înăuntru.</p>
   </div>
-  <div class="strip" id="strip">
-    <button class="strip__it" data-type="dacha"><img src="img/use-dacha.webp" alt="Modul din sticlă pe o pantă printre copaci" loading="lazy"><span class="strip__v">Vilă și locuință</span><span class="strip__d">6 × 3 m · 18 m²</span></button>
-    <button class="strip__it" data-type="office"><img src="img/use-office.webp" alt="Clădire modulară întunecată cu două etaje și rulouri" loading="lazy"><span class="strip__v">Oficiu</span><span class="strip__d">6 × 3 m · 18 m²</span></button>
-    <button class="strip__it" data-type="bytovka"><img src="img/use-bytovka.webp" alt="Vagon de șantier cu ușă albastră pe suporturi" loading="lazy"><span class="strip__v">Vagon de șantier</span><span class="strip__d">6 × 2,4 m · 14 m²</span></button>
-    <button class="strip__it" data-type="post"><img src="img/use-post.webp" alt="Paznic în ghereta de la intrarea pe teritoriu" loading="lazy"><span class="strip__v">Post de pază</span><span class="strip__d">2 × 2 m · 4 m²</span></button>
-    <button class="strip__it" data-type="sanblok"><img src="img/use-sanblok.webp" alt="Modul tehnic gri cu ușă de ventilație" loading="lazy"><span class="strip__v">Bloc sanitar</span><span class="strip__d">6 × 2,4 m · 14 m²</span></button>
-    <button class="strip__it" data-type="sklad"><img src="img/use-sklad.webp" alt="Clădire din panouri sandwich cu ferestre" loading="lazy"><span class="strip__v">Garaj, depozit</span><span class="strip__d">6 × 4 m · 24 m²</span></button>
-    <button class="strip__it" data-type="gorodok"><img src="img/use-gorodok.webp" alt="Rând de module locuibile pentru muncitori" loading="lazy"><span class="strip__v">Tabără pentru muncitori</span><span class="strip__d">de la 4 module</span></button>
+  <div class="wrap uses">
+    <div class="uses__list" id="usesList" role="tablist" aria-label="Pentru ce e modulul"></div>
+    <article class="uses__card" id="usesCard" aria-live="polite">
+      <div class="uses__img"><img id="uImg" src="img/use-dacha.webp" alt="" loading="lazy"><span class="uses__tag" id="uTag">6 × 3 m · 18 m²</span></div>
+      <div class="uses__body">
+        <h3 id="uTitle">Vilă și locuință</h3>
+        <p id="uText"></p>
+        <ul class="uses__specs" id="uSpecs"></ul>
+        <ul class="uses__inc" id="uInc"></ul>
+        <button class="btn btn--dark" id="uGo" type="button">Calculează această variantă</button>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -483,6 +490,6 @@
   "baseDays": 14
 }
 </script>
-<script src="main.js?v=8"></script>
+<script src="main.js?v=10"></script>
 </body>
 </html>
